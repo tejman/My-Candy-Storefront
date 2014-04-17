@@ -1,0 +1,43 @@
+extends layout
+
+block content
+	.jumbotron
+		h1 Welcome to our Candy Store
+		h2 The finest candy in <del>Boulder</del> the Universe.
+
+	.row
+		.col-sm-10
+			#inventory
+
+		.col-sm-2
+			#shopping-cart
+
+
+	//- TEMPLATES
+
+	#inventory-item-template.template
+		.col-sm-5.col-sm-offset-1
+			.item
+				h2.item-name NAME
+				.item-price PRICE
+				p.item-description DESCRIPTION
+				p.text-muted
+						span.item-quantity QUANTITY
+						span.item-quantity-label  remaining
+				button.item-add.btn.btn-primary Add to Cart
+
+	#shopping-cart-template.template
+		.order
+			h2 Order
+			ul.order-items
+
+	#order-item-template.template
+		li
+			span.name NAME
+			|  (
+			span.quantity QUANTITY
+			| )
+
+	script.
+		var order = !{JSON.stringify(order)};
+		var inventoryItems = !{JSON.stringify(inventoryItems)};
